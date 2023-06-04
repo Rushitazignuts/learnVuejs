@@ -1,55 +1,59 @@
 <template>
   <div id="app">
-<input type="text"    v-model="name">
-<p>{{ name }}</p>
+    <input type="text" v-model="name" />
+    <p>{{ name }}</p>
     <!-- attribute binding  -->
-   <div v-bind:id ="headingId">hello</div> 
+    <div v-bind:id="headingId">hello</div>
 
-   <!-- att. binding using only colon not need to v-bind -->
-   <button :disabled="isDisabled">hello</button> 
+    <!-- att. binding using only colon not need to v-bind -->
+    <button :disabled="isDisabled">hello</button>
 
-   <!-- text binding -->
-  <h1>hello {{ name }}</h1>   
-  <div v-html="hack"></div> 
+    <!-- text binding -->
+    <h1>hello {{ name }}</h1>
+    <div v-html="hack"></div>
 
-  <!-- text binding diff is html and text using v-html apply also style  -->
-  <div v-text="print"></div>  
-  <div v-html="print"></div>  
+    <!-- text binding diff is html and text using v-html apply also style  -->
+    <div v-text="print"></div>
+    <div v-html="print"></div>
 
-  <!-- class binding -->
-  <h2 v-bind:class="status">hello world</h2>
+    <!-- class binding -->
+    <h2 v-bind:class="status">hello world</h2>
 
-  <!-- diff is v-if and v-show v-if is false then not displayed in element and v-show is false but it is render in element with display-none -->
-  <span v-if="seen">v-if</span> 
-  <sapn v-show="seen">v-show</sapn>
+    <!-- diff is v-if and v-show v-if is false then not displayed in element and v-show is false but it is render in element with display-none -->
+    <span v-if="seen">v-if</span>
+    <sapn v-show="seen">v-show</sapn>
 
-<!-- conditional render -->
-  <p v-if="num>0">positive</p>
-  <p v-else-if="num<0">negative</p>
-  <p v-else-if="num===0">zero</p>
-  <p v-else>NaN</p>
+    <!-- conditional render -->
+    <p v-if="num > 0">positive</p>
+    <p v-else-if="num < 0">negative</p>
+    <p v-else-if="num === 0">zero</p>
+    <p v-else>NaN</p>
 
+    <ol>
+      <li v-for="(todo, index) in todos" v-bind:key="todo">
+        {{ index }} {{ todo.text }} {{ todo.prop }}
+      </li>
+    </ol>
+
+    <!-- using tempalate not need to key attribute -->
+    <h3 v-for="(value, key, index) in obj" :key="value">
+      {{ index }} - {{ key }} - {{ value }}
+    </h3>
+    <template v-for="(value, key, index) in obj"
+      >{{ index }} - {{ key }} - {{ value }}</template
+    >
+
+    <!-- using title apply tooltip hover -->
+    <span v-bind:title="msg">paragraph</span>
+    <span title="hello i am ruchi">hover me</span>
+
+    <!-- using template all 3 element are render separate and using div all 3 ele. render in div ele -->
+    <template v-if="ok">
+      <h1>Title</h1>
+      <p>Paragraph 1</p>
+      <p>Paragraph 2</p>
+    </template>
   
-  <ol>
-    <li v-for="(todo,index) in todos" v-bind:key="todo">
-     {{ index }} {{ todo.text }} {{ todo.prop }}
-    </li>
-  </ol>
-
-<!-- using tempalate not need to key attribute -->
-  <h3 v-for="(value,key,index) in obj" :key="value">{{ index }} - {{ key }} - {{ value }}</h3>
-  <template v-for="(value,key,index) in obj" >{{ index }} - {{ key }} - {{ value }}</template>
-
-  <!-- using title apply tooltip hover -->
-  <span v-bind:title="msg">paragraph</span> 
-  <span title="hello i am ruchi">hover me</span>
-
-<!-- using template all 3 element are render separate and using div all 3 ele. render in div ele -->
-  <template v-if="ok">
-  <h1>Title</h1>
-  <p>Paragraph 1</p>
-  <p>Paragraph 2</p>
-</template>
 
 <!-- event handling -->
 <div v-for="name in names" :key="name">{{ name }}</div>
@@ -118,18 +122,56 @@
 <h4>Computed total : {{ total }}</h4>
 <h1>{{ reversedMessage }}</h1>
 <h2>{{ fullname }}</h2>
+<h3> Volume tracker </h3>
+<h5>current volume {{ volume }}</h5>
+<button @click="volume += 2">increase</button>
+<button @click="volume -= 2">decrease</button>
+<h1>app : {{username}}</h1>
+ <HelloWorld name="ruchi"></HelloWorld>
+ <HelloWorld name="patel"></HelloWorld>
+ <HelloWorld :name="firstName" :name1="lastName" ></HelloWorld>
+ <HelloWorld>slot is here</HelloWorld>
+ <HelloWorld></HelloWorld>
+ 
+<BindingCom title="props" :isActive="true"></BindingCom>
+<ComponentF></ComponentF>
+<button @click="show=true">Show PopUp</button>
+<PopUp v-show="show" @Close="ClosePopUp"></PopUp>
+<HttpGet></HttpGet>
 
 </div>
+
 </template>
 
 <script>
+import BindingCom from './components/BindingCom.vue';
+import ComponentF from './components/ComponentF.vue';
+import HelloWorld from './components/HelloWorld.vue';
+import HttpGet from './components/HttpGet.vue';
+import PopUp from './components/PopUp.vue';
+
+
+
+
 
 
 export default {
   name: 'App',
+  components : {
+    HelloWorld,
+    BindingCom,
+    ComponentF,
+    PopUp,
+    HttpGet
+   
+   
+
+  },
   data() {
     return {
-
+  username : 'Rushita Vaghasiya'  , 
+  show:false, 
+volume : 0,
  name : 'hello',
  firstName :'john',
  lastName :'duo',
@@ -178,6 +220,9 @@ export default {
 
   },
   methods:{
+    ClosePopUp(){
+this.show=false
+    },
 
 addName(){
 this.names.push(this.newname);
@@ -210,7 +255,21 @@ return this.item.reduce((total, curr)=> (total = total + curr.price),0)
 
 
     
+  },
+  watch :{
+    volume(newValue){
+      if(newValue === 16){
+        alert("hign volume");
+      }
+    }
+  },
+  provide(){
+    return {
+username : this.username,
+    }
+    
   }
+
     }
   
 
