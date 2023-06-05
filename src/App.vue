@@ -144,6 +144,9 @@
 <ClickCounter></ClickCounter>
 <HoverCounter></HoverCounter>
 
+<CompoApi></CompoApi>
+<RepMethods></RepMethods>
+
 </div>
 
 </template>
@@ -157,8 +160,9 @@ import PopUp from './components/PopUp.vue';
 import TemplateRef from './components/TemplateRef.vue';
 import ClickCounter from './components/ClickCounter.vue';
 import HoverCounter from './components/HoverCounter.vue';
+import CompoApi from './components/CompoApi.vue'
 
-
+import RepMethods from './components/RepMethods.vue';
 
 export default {
   name: 'App',
@@ -170,7 +174,9 @@ export default {
     HttpGet,
     TemplateRef,
     ClickCounter,
-    HoverCounter
+    HoverCounter,
+    CompoApi,
+    RepMethods
    
    
 
