@@ -1,6 +1,6 @@
 <template>
     <div>
-<button @click="getData">Load Data</button>
+<!-- <button @click="getData">Load Data</button> -->
 <div v-for="post in posts" :key=post.id>
     <h3>{{post.id}} - {{post.title}}</h3>
     <hr>
@@ -33,6 +33,9 @@
 import axios from 'axios';
     export default {
         name : "HttpGet",
+        created(){
+this.getData();
+        },
         data(){
             return {
 

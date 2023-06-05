@@ -126,18 +126,23 @@
 <h5>current volume {{ volume }}</h5>
 <button @click="volume += 2">increase</button>
 <button @click="volume -= 2">decrease</button>
+
 <h1>app : {{username}}</h1>
  <HelloWorld name="ruchi"></HelloWorld>
  <HelloWorld name="patel"></HelloWorld>
  <HelloWorld :name="firstName" :name1="lastName" ></HelloWorld>
  <HelloWorld>slot is here</HelloWorld>
- <HelloWorld></HelloWorld>
+ <HelloWorld>slot is here</HelloWorld>
  
 <BindingCom title="props" :isActive="true"></BindingCom>
 <ComponentF></ComponentF>
 <button @click="show=true">Show PopUp</button>
 <PopUp v-show="show" @Close="ClosePopUp"></PopUp>
 <HttpGet></HttpGet>
+
+<TemplateRef></TemplateRef>
+<ClickCounter></ClickCounter>
+<HoverCounter></HoverCounter>
 
 </div>
 
@@ -149,9 +154,9 @@ import ComponentF from './components/ComponentF.vue';
 import HelloWorld from './components/HelloWorld.vue';
 import HttpGet from './components/HttpGet.vue';
 import PopUp from './components/PopUp.vue';
-
-
-
+import TemplateRef from './components/TemplateRef.vue';
+import ClickCounter from './components/ClickCounter.vue';
+import HoverCounter from './components/HoverCounter.vue';
 
 
 
@@ -162,14 +167,17 @@ export default {
     BindingCom,
     ComponentF,
     PopUp,
-    HttpGet
+    HttpGet,
+    TemplateRef,
+    ClickCounter,
+    HoverCounter
    
    
 
   },
   data() {
     return {
-  username : 'Rushita Vaghasiya'  , 
+  username : 'rushita vaghasiya'  , 
   show:false, 
 volume : 0,
  name : 'hello',

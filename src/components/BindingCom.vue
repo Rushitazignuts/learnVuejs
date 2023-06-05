@@ -2,10 +2,11 @@
     <div>
 <h1 v-bind = "$attrs">{{  title }}</h1>
 <h2>{{ isActive ? 'yes' : 'No'}}</h2>
+
     </div>
 </template>
 
-<script>
+<script>    
     export default {
         name : "BindingCom",
         props:{
@@ -15,7 +16,10 @@
             default :"hello world" // you set a default title
             },
            isActive :Boolean,
-        }
+           
+        },
+        
+        
     }
 </script>
 
