@@ -2,26 +2,26 @@
     <div>
 <button @click="getData">Load Data</button>
 <div v-for="post in posts" :key=post.id>
-    <h3>{{post.id}} - {{post.title}}</h3>
-    <hr>
-    <p>{{post.body}}</p>
+    <h3>{{post.id}} - {{post.name}} - {{post.username}}</h3>
+    
+  
 </div>
 
 
 <form @submit.prevent="cretePost">
     <div>
-        <label for="userId">userId</label>
-        <input type="text" id="userId" v-model="formData.userId">
+        <label for="id">Id</label>
+        <input type="text" id="id" v-model="formData.id">
          </div>
 
          <div>
-        <label for="title">userId</label>
-        <input type="text" id="title" v-model="formData.title">
+        <label for="name">Name</label>
+        <input type="text" id="name" v-model="formData.name">
          </div>
 
          <div>
-        <label for="body">userId</label>
-        <input type="text" id="body" v-model="formData.body">
+        <label for="username">username</label>
+        <input type="text" id="username" v-model="formData.username">
          </div>
          <button>Create Post Data</button>
 </form>
@@ -41,15 +41,15 @@ this.getData();
 
                 posts :[],
                 formData:{
-                    userId : '',
-                    title : '',
-                    body : ''
+                    id : '',
+                    name : '',
+                    username : ''
                 }
             }
         },
         methods: {
             getData(){
-                axios.get('https://jsonplaceholder.typicode.com/posts').then((response)=>{
+                axios.get('https://jsonplaceholder.typicode.com/users').then((response)=>{
                     console.log(response.data);
                     this.posts = response.data
                 })
@@ -59,7 +59,7 @@ console.log(error)
 
                 },
                 cretePost(){
-                    axios.post('https://jsonplaceholder.typicode.com/posts',this.formData).then((response)=>{
+                    axios.post('https://jsonplaceholder.typicode.com/users',this.formData).then((response)=>{
                     console.log(response.data);
                     this.posts = response.data
                 })

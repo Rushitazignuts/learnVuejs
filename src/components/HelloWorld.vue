@@ -2,6 +2,9 @@
 <div>
     <h1>hello {{name}} -- {{name1}}</h1>
     <slot>slot default</slot>
+    
+
+
 </div>
   
 </template>
@@ -9,8 +12,13 @@
 
 export default {
     name : "HelloWorld",
-    props : ['name', 'name1']
-}
+    props : ['name', 'name1'],
+    
+    
+    
+    
+    }
+
 
 </script>
 

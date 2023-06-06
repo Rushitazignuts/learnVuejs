@@ -146,6 +146,9 @@
 
 <CompoApi></CompoApi>
 <RepMethods></RepMethods>
+<ComputedProp></ComputedProp>
+<CompoWatch></CompoWatch>
+<CompoProp></CompoProp>
 
 </div>
 
@@ -161,8 +164,11 @@ import TemplateRef from './components/TemplateRef.vue';
 import ClickCounter from './components/ClickCounter.vue';
 import HoverCounter from './components/HoverCounter.vue';
 import CompoApi from './components/CompoApi.vue'
-
+import ComputedProp from './components/ComputedProp.vue';
 import RepMethods from './components/RepMethods.vue';
+import CompoWatch from './components/CompoWatch.vue'
+import CompoProp from './components/CompoProp.vue';
+
 
 export default {
   name: 'App',
@@ -176,7 +182,12 @@ export default {
     ClickCounter,
     HoverCounter,
     CompoApi,
-    RepMethods
+    RepMethods,
+    ComputedProp,
+    CompoWatch,
+    CompoProp,
+   
+
    
    
 
@@ -229,7 +240,7 @@ volume : 0,
 
     
 
- 
+  
     }
 
   },

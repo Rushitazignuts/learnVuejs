@@ -6,17 +6,29 @@
 </template>
 
 <script>
+import{onMounted, ref} from 'vue'
         import HttpGet from './HttpGet.vue'
     export default {
         name : "TemplateRef",
         components:{
             HttpGet
         },
-        mounted(){
-        console.log(this.$refs.postRef);
-            this.$refs.inputRef.focus();
 
-        }
+        setup(){
+            const inputRef = ref(null)
+            onMounted(()=>{
+                inputRef.value.focus()
+                return {
+                    inputRef
+                }
+            })
+
+        },
+        // mounted(){
+        // console.log(this.$refs.postRef);
+        //     this.$refs.inputRef.focus();
+
+       // }
     }   
 </script>
 
