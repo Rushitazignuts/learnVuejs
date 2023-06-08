@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+  
     <input type="text" v-model="name" />
     <p>{{ name }}</p>
     <!-- attribute binding  -->
@@ -192,8 +193,9 @@ export default {
    
 
   },
-  data() {
+  data() {  
     return {
+     
   username : 'rushita vaghasiya'  , 
   show:false, 
 volume : 0,
@@ -266,6 +268,8 @@ submitForm(event){
       total(){
 return this.item.reduce((total, curr)=> (total = total + curr.price),0)
       },
+      
+   
       
       
       reversedMessage: function () {
